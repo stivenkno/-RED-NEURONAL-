@@ -1,0 +1,362 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.25.1",
+    "script_metadata_hash": "0deb194483f7a5516b80bb47ff7d1be3"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "adcba7ff6f88e0e13e875b02e832ff81",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"neural-networks\">Neural networks</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "3290fd593aea904ccce5aa7236e92e21",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"perceptron-the-core-concept\">Perceptron: the core concept</h2>\n<span class=\"paragraph\">A perceptron is one of the earliest neuron models (1950s - 1960s).</span>\n<h3 id=\"how-it-works\">How it works:</h3>\n<ul>\n<li>Takes several <strong>binary inputs</strong> <marimo-tex class=\"arithmatex\">||((x_1, x_2, \\ldots)||)</marimo-tex> and produces a single <strong>binary output</strong></li>\n<li>Each input has a weight <marimo-tex class=\"arithmatex\">||((w_1, w_2, \\ldots)||)</marimo-tex> expressing its importance</li>\n<li>Computes a weighted sum <marimo-tex class=\"arithmatex\">||(\\sum w_jx_j||)</marimo-tex> and compares it to a threshold.</li>\n<li>Modern notation replaces the threshold with a bias <marimo-tex class=\"arithmatex\">||(b||)</marimo-tex></li>\n</ul>\n<marimo-tex class=\"arithmatex\">||[\n  \\hat{y} = \\begin{cases}\n      0 \\;\\; \\text{if}\\;\\; \\sum_j w_j \\cdot x_j \\leq \\text{threshold}\\\\\n      1 \\;\\; \\text{if}\\;\\; \\sum_j w_j \\cdot x_j &gt; \\text{threshold}\\\\\n  \\end{cases}\n||]</marimo-tex><span class=\"paragraph\">or more common these days:</span>\n<marimo-tex class=\"arithmatex\">||[\n  \\hat{y} = \\begin{cases}\n      0 \\;\\; \\text{if}\\;\\; \\sum_j w_j \\cdot x_j + b \\leq 0\\\\\n      1 \\;\\; \\text{if}\\;\\; \\sum_j w_j \\cdot x_j +b &gt; 0 \\\\\n  \\end{cases}\n||]</marimo-tex><span class=\"paragraph\">The threshold is represented by <marimo-tex class=\"arithmatex\">||(b||)</marimo-tex>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "792b5ebde66bf613ebd26378a4dd1acd",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "fd338e98d315ed5f452bdecf33458c8b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">We call <marimo-tex class=\"arithmatex\">||(\\{w_1, w_2, w_3, b \\}||)</marimo-tex> the parameters of the perceptron. Knowing its values we can relicate its behavior.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "7a1433e90d7fcd3fc6df6a2045de8c3a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"play-with-a-perceptron\">Play with a perceptron</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "93f12634e87f0ac8675e6b8ec5a34153",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "f8738fbc05de80c9af663e50bb94a6de",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "2e122427d58d5022b1e2a5d01543162d",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "4ca795959afc13d9cdfa978f00834602",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"nand-gate\">NAND gate</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "0e48e0a2982c60de913dd3c253d96318",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "87079cf1ef9eac7b619f9fee0b50fdb5",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "6fbd3f102f4b5444f6bcc773233d0205",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "cf450f0835f7bda7e936fe36e8d18944",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "9b8bc586e0a41de9bf589036d73a49a2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"simple-neural-network\">Simple neural network</h2>\n<span class=\"paragraph\">We can arrange perceptrons to form a neural network. In the following image we have 7 perceptrons:</span>\n<ul>\n<li>2 in the first column (blue)</li>\n<li>4 in the second column (grren)</li>\n<li>1 in the last column (orange)</li>\n</ul>\n<span class=\"paragraph\">We use the term layer instead of column. The neural network has an input layer, one hidden layer and an output layer.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "d1a10a874775f9aa010c2df4d3cdb8f2",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "bb109e7f464f6e6f7ec4cf2a1345f116",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"sigmoid-neurons\">Sigmoid neurons</h2>\n<span class=\"paragraph\">Perceptrons have a big problem, when they are chained in a network a samll change in any of it weights might produce a big change in the output. A sigmoid neuron is a modified version that allow small changes in <strong>weights and bias</strong> to produce small changes in the outpt.</span>\n<span class=\"paragraph\">The sigmoid (logistic) function is defined as:</span>\n<marimo-tex class=\"arithmatex\">||[\n\\sigma(z) \\equiv \\frac{1}{1+e^{-z}}\n||]</marimo-tex><span class=\"paragraph\">In our case <marimo-tex class=\"arithmatex\">||(z = w \\cdot x + b||)</marimo-tex> so it becomes:</span>\n<marimo-tex class=\"arithmatex\">||[\n\\sigma(z) = \\frac{1}{1+ e^{-\\sum_j w_j x_j - b}}\n||]</marimo-tex><span class=\"paragraph\"><strong>Relationship to the perceptron</strong>: the sigmoid neuron is a smoothed-out perceptron. When <marimo-tex class=\"arithmatex\">||(w \\cdot x + b||)</marimo-tex> is:</span>\n<ul>\n<li>A large positive the output approaches to 1.</li>\n<li>A large negative the output approaches to 0.</li>\n</ul>\n<span class=\"paragraph\">So far is the same as a perceptron. The difference is at modest values, where the somooth <marimo-tex class=\"arithmatex\">||(\\sigma||)</marimo-tex> makes the output chenge linearly with small adjustments to the weights and bias.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "8c97f456e858a730a1ad319b9b69d44d",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "839df9c91280f07c195350baafb34e2c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">the diagram of the sigmid neuron should be:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "90d415566699980e31f792a12a5e5ec2",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "0181b4107b587e7968c91f3a893e61b7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"play-with-a-sigmoid-neuron\">Play with a sigmoid neuron</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "04db6f124a06fc25a218d064d0664feb",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "af2a2a573a0d18bc4cc174da409b9bbc",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "cbc7851c6fc56267983dc45b8139b83d",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "70d9efdeb03cbd220f7c50d98b8b7a3c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"xor-function\">XOR function</h2>\n<span class=\"paragraph\">Let's design NN to learn the XOR function.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "3a9ea7b1fb5dfa1ef38a041330edd8c8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">The <strong>XOR</strong> function is not linearly separable \u2014 a single perceptron cannot learn it.\nWe need at least one hidden layer.</span>\n<table>\n<thead>\n<tr>\n<th style=\"text-align: center;\"><marimo-tex class=\"arithmatex\">||(x_1||)</marimo-tex></th>\n<th style=\"text-align: center;\"><marimo-tex class=\"arithmatex\">||(x_2||)</marimo-tex></th>\n<th style=\"text-align: center;\"><marimo-tex class=\"arithmatex\">||(x_1 \\oplus x_2||)</marimo-tex></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">0</td>\n<td style=\"text-align: center;\">0</td>\n<td style=\"text-align: center;\">0</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">0</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">1</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">0</td>\n<td style=\"text-align: center;\">1</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">0</td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\"><strong>Architecture:</strong> 2 \u2192 4 \u2192 1 with sigmoid activations everywhere.</span>\n<span class=\"paragraph\"><strong>Training:</strong> gradient descent minimising MSE loss,\nimplemented from scratch with NumPy so every step is visible.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "a343a343ccdc3e4b1ca99114393f3003",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "2ccc30a157ee7fe6e8997e272f2c4f6c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"forward-pass-in-matrix-form\">Forward pass in matrix form</h3>\n<span class=\"paragraph\"><strong>Input:</strong></span>\n<marimo-tex class=\"arithmatex\">||[\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix} \\in \\mathbb{R}^2||]</marimo-tex><span class=\"paragraph\"><strong>Hidden layer</strong> (<marimo-tex class=\"arithmatex\">||(2 \\to 4||)</marimo-tex>):</span>\n<marimo-tex class=\"arithmatex\">||[\\mathbf{z}^{(1)} = W^{(1)}\\mathbf{x} + \\mathbf{b}^{(1)}||]</marimo-tex><marimo-tex class=\"arithmatex\">||[\\begin{bmatrix} z_1^{(1)} \\\\ z_2^{(1)} \\\\ z_3^{(1)} \\\\ z_4^{(1)} \\end{bmatrix} =\n\\underbrace{\\begin{bmatrix}\n  w_{11} &amp; w_{12} \\\\\n  w_{21} &amp; w_{22} \\\\\n  w_{31} &amp; w_{32} \\\\\n  w_{41} &amp; w_{42}\n\\end{bmatrix}}_{W^{(1)}\\,\\in\\,\\mathbb{R}^{4\\times 2}}\n\\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}\n+\n\\underbrace{\\begin{bmatrix} b_1^{(1)} \\\\ b_2^{(1)} \\\\ b_3^{(1)} \\\\ b_4^{(1)} \\end{bmatrix}}_{\\mathbf{b}^{(1)}\\,\\in\\,\\mathbb{R}^4}||]</marimo-tex><marimo-tex class=\"arithmatex\">||[\\mathbf{a}^{(1)} = \\sigma\\!\\left(\\mathbf{z}^{(1)}\\right) \\in \\mathbb{R}^4||]</marimo-tex><span class=\"paragraph\"><strong>Output layer</strong> (<marimo-tex class=\"arithmatex\">||(4 \\to 1||)</marimo-tex>):</span>\n<marimo-tex class=\"arithmatex\">||[z^{(2)} = \\mathbf{w}^{(2)\\top}\\mathbf{a}^{(1)} + b^{(2)}||]</marimo-tex><marimo-tex class=\"arithmatex\">||[z^{(2)} =\n\\underbrace{\\begin{bmatrix} w_1^{(2)} &amp; w_2^{(2)} &amp; w_3^{(2)} &amp; w_4^{(2)}\\end{bmatrix}}_{\\mathbf{w}^{(2)\\top}\\,\\in\\,\\mathbb{R}^{1\\times 4}}\\begin{bmatrix} a_1^{(1)} \\\\ a_2^{(1)} \\\\ a_3^{(1)} \\\\ a_4^{(1)} \\end{bmatrix}+ b^{(2)}||]</marimo-tex><marimo-tex class=\"arithmatex\">||[\\hat{y} = \\sigma\\!\\left(z^{(2)}\\right) \\in [0,1]||]</marimo-tex><span class=\"paragraph\"><strong>Loss (MSE over the 4 XOR examples):</strong></span>\n<marimo-tex class=\"arithmatex\">||[\\mathcal{L} = \\frac{1}{4}\\sum_{i=1}^{4}\\left(\\hat{y}^{(i)} - y^{(i)}\\right)^2||]</marimo-tex></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "fa23e773f5fe0d8a673d55cc2480c523",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"parameters-theta\">Parameters <marimo-tex class=\"arithmatex\">||(\\Theta||)</marimo-tex></h3>\n<span class=\"paragraph\">All learnable values of the network are collected in:</span>\n<marimo-tex class=\"arithmatex\">||[\\Theta = \\left\\{ W^{(1)},\\, \\mathbf{b}^{(1)},\\, \\mathbf{w}^{(2)},\\, b^{(2)} \\right\\}||]</marimo-tex><table>\n<thead>\n<tr>\n<th style=\"text-align: center;\">Symbol</th>\n<th style=\"text-align: center;\">Shape</th>\n<th style=\"text-align: left;\">Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\"><marimo-tex class=\"arithmatex\">||(W^{(1)}||)</marimo-tex></td>\n<td style=\"text-align: center;\"><marimo-tex class=\"arithmatex\">||(4 \\times 2||)</marimo-tex></td>\n<td style=\"text-align: left;\">Weight matrix \u2014 input \u2192 hidden. Row <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> weights the connections arriving at hidden neuron <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex>.</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><marimo-tex class=\"arithmatex\">||(\\mathbf{b}^{(1)}||)</marimo-tex></td>\n<td style=\"text-align: center;\"><marimo-tex class=\"arithmatex\">||(4 \\times 1||)</marimo-tex></td>\n<td style=\"text-align: left;\">Bias vector for the hidden layer. One bias per hidden neuron.</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><marimo-tex class=\"arithmatex\">||(\\mathbf{w}^{(2)}||)</marimo-tex></td>\n<td style=\"text-align: center;\"><marimo-tex class=\"arithmatex\">||(4 \\times 1||)</marimo-tex></td>\n<td style=\"text-align: left;\">Weight vector \u2014 hidden \u2192 output.</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><marimo-tex class=\"arithmatex\">||(b^{(2)}||)</marimo-tex></td>\n<td style=\"text-align: center;\">scalar</td>\n<td style=\"text-align: left;\">Bias for the output neuron.</td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\">Total trainable parameters: <marimo-tex class=\"arithmatex\">||(4{\\times}2 + 4 + 4 + 1 = \\mathbf{17}||)</marimo-tex>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "8b12c68f7480c267a6050bbbaa625613",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"dependency-graph\">Dependency graph</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "ba174f3ccfc2bbc85640d92d083cc435",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "NCOB",
+      "code_hash": "99a9cc7be426c16bd26010247ae58f38",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"backward-propagation\">Backward propagation</h3>\n<span class=\"paragraph\">Backprop applies the <strong>chain rule</strong> from loss back to every parameter in <marimo-tex class=\"arithmatex\">||(\\Theta||)</marimo-tex>.</span>\n<hr />\n<h4 id=\"loss-derivative-dfracpartial-mathcallpartial-haty\">Loss derivative \u2014 <marimo-tex class=\"arithmatex\">||(\\dfrac{\\partial \\mathcal{L}}{\\partial \\hat{y}}||)</marimo-tex></h4>\n<span class=\"paragraph\">The loss is the mean squared error over <marimo-tex class=\"arithmatex\">||(N||)</marimo-tex> examples:</span>\n<marimo-tex class=\"arithmatex\">||[\\mathcal{L} \\;=\\; \\frac{1}{N}\\sum_{i=1}^{N}\\bigl(\\hat{y}^{(i)} - y^{(i)}\\bigr)^{2}||]</marimo-tex><span class=\"paragraph\">For a single example <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex>, only one term in the sum depends on <marimo-tex class=\"arithmatex\">||(\\hat{y}^{(i)}||)</marimo-tex>, so all other terms vanish when differentiating:</span>\n<marimo-tex class=\"arithmatex\">||[\\frac{\\partial \\mathcal{L}}{\\partial \\hat{y}^{(i)}}\n\\;=\\; \\frac{1}{N}\\,\\frac{\\partial}{\\partial \\hat{y}^{(i)}}\\bigl(\\hat{y}^{(i)} - y^{(i)}\\bigr)^{2}\n\\;=\\; \\frac{1}{N}\\cdot 2\\bigl(\\hat{y}^{(i)} - y^{(i)}\\bigr)\n\\;=\\; \\frac{2}{N}\\bigl(\\hat{y}^{(i)} - y^{(i)}\\bigr)||]</marimo-tex><span class=\"paragraph\">Stacking over all <marimo-tex class=\"arithmatex\">||(N||)</marimo-tex> examples gives the vector form:</span>\n<marimo-tex class=\"arithmatex\">||[\\boxed{\\;\\frac{\\partial \\mathcal{L}}{\\partial \\hat{\\mathbf{y}}}\n\\;=\\; \\frac{2}{N}\\bigl(\\hat{\\mathbf{y}} - \\mathbf{y}\\bigr) \\;\\in\\; \\mathbb{R}^{N\\times 1}\\;}||]</marimo-tex><span class=\"paragraph\">Intuition:</span>\n<ul>\n<li>If the prediction matches the target (<marimo-tex class=\"arithmatex\">||(\\hat{y} = y||)</marimo-tex>) the gradient is zero \u2014 nothing to fix.</li>\n<li>The sign of <marimo-tex class=\"arithmatex\">||(\\hat{y} - y||)</marimo-tex> tells us <strong>which direction</strong> to push <marimo-tex class=\"arithmatex\">||(\\hat{y}||)</marimo-tex>.</li>\n<li>The magnitude tells us <strong>how strongly</strong>.</li>\n</ul>\n<span class=\"paragraph\">This vector is the <em>error signal</em> that every step below propagates backward through the network.</span>\n<hr />\n<h4 id=\"sigmoid-derivative\">Sigmoid derivative</h4>\n<marimo-tex class=\"arithmatex\">||[\\sigma'(z) \\;=\\; \\sigma(z)\\,\\bigl(1 - \\sigma(z)\\bigr)||]</marimo-tex><hr />\n<h4 id=\"step-1-error-at-the-output-delta2\">Step 1 \u2014 error at the output, <marimo-tex class=\"arithmatex\">||(\\delta^{(2)}||)</marimo-tex></h4>\n<span class=\"paragraph\">We define the <strong>output error</strong> as the derivative of the loss with respect to the pre-activation <marimo-tex class=\"arithmatex\">||(z^{(2)}||)</marimo-tex>:</span>\n<marimo-tex class=\"arithmatex\">||[\\delta^{(2)} \\;\\triangleq\\; \\frac{\\partial \\mathcal{L}}{\\partial z^{(2)}}||]</marimo-tex><span class=\"paragraph\"><marimo-tex class=\"arithmatex\">||(\\mathcal{L}||)</marimo-tex> does not depend on <marimo-tex class=\"arithmatex\">||(z^{(2)}||)</marimo-tex> directly \u2014 only through <marimo-tex class=\"arithmatex\">||(\\hat{y} = \\sigma(z^{(2)})||)</marimo-tex>. So we apply the <strong>chain rule</strong>:</span>\n<marimo-tex class=\"arithmatex\">||[\\frac{\\partial \\mathcal{L}}{\\partial z^{(2)}}\n\\;=\\; \\underbrace{\\frac{\\partial \\mathcal{L}}{\\partial \\hat{y}}}_{\\text{loss derivative}}\n\\;\\cdot\\;\n\\underbrace{\\frac{\\partial \\hat{y}}{\\partial z^{(2)}}}_{\\text{activation derivative}}||]</marimo-tex><span class=\"paragraph\">We already have the first factor. For the second one, since <marimo-tex class=\"arithmatex\">||(\\hat{y} = \\sigma(z^{(2)})||)</marimo-tex> and using the sigmoid derivative:</span>\n<marimo-tex class=\"arithmatex\">||[\\frac{\\partial \\hat{y}}{\\partial z^{(2)}}\n\\;=\\; \\sigma'(z^{(2)})\n\\;=\\; \\sigma(z^{(2)})\\bigl(1 - \\sigma(z^{(2)})\\bigr)\n\\;=\\; \\hat{y}\\,(1 - \\hat{y})||]</marimo-tex><span class=\"paragraph\">Plugging both factors in, and noting both sides are vectors over the <marimo-tex class=\"arithmatex\">||(N||)</marimo-tex> examples so the product is <strong>element-wise</strong> (<marimo-tex class=\"arithmatex\">||(\\odot||)</marimo-tex>):</span>\n<marimo-tex class=\"arithmatex\">||[\\frac{\\partial \\mathcal{L}}{\\partial z^{(2,i)}}\n\\;=\\; \\frac{2}{N}\\bigl(\\hat{y}^{(i)} - y^{(i)}\\bigr)\\,\\cdot\\,\\hat{y}^{(i)}\\bigl(1 - \\hat{y}^{(i)}\\bigr)||]</marimo-tex><span class=\"paragraph\">Stacked into vector form:</span>\n<marimo-tex class=\"arithmatex\">||[\\boxed{\\;\\delta^{(2)} \\;=\\; \\underbrace{\\frac{2}{N}(\\hat{\\mathbf{y}} - \\mathbf{y})}_{\\partial\\mathcal{L}/\\partial\\hat{\\mathbf{y}}}\n\\;\\odot\\; \\underbrace{\\hat{\\mathbf{y}}\\,(1-\\hat{\\mathbf{y}})}_{\\sigma'(\\mathbf{z}^{(2)})}\n\\;\\in\\; \\mathbb{R}^{N\\times 1}\\;}||]</marimo-tex><span class=\"paragraph\">Intuition:</span>\n<ul>\n<li>The first factor says <em>how wrong</em> the prediction is.</li>\n<li>The second factor \u2014 the sigmoid slope \u2014 is largest near <marimo-tex class=\"arithmatex\">||(\\hat{y}=0.5||)</marimo-tex> and tiny near <marimo-tex class=\"arithmatex\">||(0||)</marimo-tex> or <marimo-tex class=\"arithmatex\">||(1||)</marimo-tex>. So a confidently-wrong neuron (e.g. <marimo-tex class=\"arithmatex\">||(\\hat{y}=0.99||)</marimo-tex> but <marimo-tex class=\"arithmatex\">||(y=0||)</marimo-tex>) receives a <em>smaller</em> gradient than a borderline one. This is the famous <strong>saturation</strong> behaviour of sigmoid networks.</li>\n</ul>\n<h4 id=\"gradients-for-output-parameters\">Gradients for output parameters</h4>\n<span class=\"paragraph\">Once <marimo-tex class=\"arithmatex\">||(\\delta^{(2)}||)</marimo-tex> is known, the parameters that produced <marimo-tex class=\"arithmatex\">||(z^{(2)}||)</marimo-tex> get their gradients by another chain step. Since <marimo-tex class=\"arithmatex\">||(z^{(2)} = \\mathbf{a}^{(1)}\\mathbf{w}^{(2)} + b^{(2)}||)</marimo-tex>:</span>\n<marimo-tex class=\"arithmatex\">||[\\frac{\\partial \\mathcal{L}}{\\partial \\mathbf{w}^{(2)}} \\;=\\; {\\mathbf{a}^{(1)}}^\\top\\, \\delta^{(2)}, \\qquad \\frac{\\partial \\mathcal{L}}{\\partial b^{(2)}} \\;=\\; \\mathbf{1}^\\top \\delta^{(2)}||]</marimo-tex><hr />\n<h4 id=\"step-2-error-at-the-hidden-layer-delta1\">Step 2 \u2014 error at the hidden layer, <marimo-tex class=\"arithmatex\">||(\\delta^{(1)}||)</marimo-tex></h4>\n<span class=\"paragraph\">We define the <strong>hidden error</strong> as the derivative of the loss with respect to the hidden pre-activation <marimo-tex class=\"arithmatex\">||(\\mathbf{z}^{(1)}||)</marimo-tex>:</span>\n<marimo-tex class=\"arithmatex\">||[\\delta^{(1)} \\;\\triangleq\\; \\frac{\\partial \\mathcal{L}}{\\partial \\mathbf{z}^{(1)}}||]</marimo-tex><span class=\"paragraph\"><marimo-tex class=\"arithmatex\">||(\\mathcal{L}||)</marimo-tex> does not depend on <marimo-tex class=\"arithmatex\">||(\\mathbf{z}^{(1)}||)</marimo-tex> directly. The dependency chain is</span>\n<marimo-tex class=\"arithmatex\">||[\\mathbf{z}^{(1)} \\;\\xrightarrow{\\sigma}\\; \\mathbf{a}^{(1)} \\;\\xrightarrow{\\mathbf{w}^{(2)},\\,b^{(2)}}\\; z^{(2)} \\;\\xrightarrow{\\sigma}\\; \\hat{y} \\;\\xrightarrow{\\text{MSE}}\\; \\mathcal{L}||]</marimo-tex><span class=\"paragraph\">Everything past <marimo-tex class=\"arithmatex\">||(\\mathbf{a}^{(1)}||)</marimo-tex> has already been collapsed into <marimo-tex class=\"arithmatex\">||(\\delta^{(2)} = \\partial\\mathcal{L}/\\partial z^{(2)}||)</marimo-tex>. So the chain rule reduces to two factors:</span>\n<marimo-tex class=\"arithmatex\">||[\\frac{\\partial \\mathcal{L}}{\\partial \\mathbf{z}^{(1)}}\n\\;=\\; \\underbrace{\\frac{\\partial \\mathcal{L}}{\\partial \\mathbf{a}^{(1)}}}_{\\text{error reaching the hidden activations}}\n\\;\\odot\\;\n\\underbrace{\\frac{\\partial \\mathbf{a}^{(1)}}{\\partial \\mathbf{z}^{(1)}}}_{\\text{activation derivative}}||]</marimo-tex><span class=\"paragraph\"><strong>Factor 1.</strong> How does the error reach <marimo-tex class=\"arithmatex\">||(\\mathbf{a}^{(1)}||)</marimo-tex>? Through the output linearity <marimo-tex class=\"arithmatex\">||(z^{(2)} = \\mathbf{a}^{(1)}\\mathbf{w}^{(2)} + b^{(2)}||)</marimo-tex>. For one example, neuron <marimo-tex class=\"arithmatex\">||(j||)</marimo-tex> of the hidden layer is connected to the output by weight <marimo-tex class=\"arithmatex\">||(w_j^{(2)}||)</marimo-tex>, so:</span>\n<marimo-tex class=\"arithmatex\">||[\\frac{\\partial z^{(2)}}{\\partial a_j^{(1)}} \\;=\\; w_j^{(2)}\n\\quad\\Longrightarrow\\quad\n\\frac{\\partial \\mathcal{L}}{\\partial a_j^{(1)}} \\;=\\; \\delta^{(2)}\\,w_j^{(2)}||]</marimo-tex><span class=\"paragraph\">Stacked over all 4 hidden neurons and all <marimo-tex class=\"arithmatex\">||(N||)</marimo-tex> examples, this is a single matrix product:</span>\n<marimo-tex class=\"arithmatex\">||[\\frac{\\partial \\mathcal{L}}{\\partial \\mathbf{a}^{(1)}}\n\\;=\\; \\delta^{(2)}\\,{\\mathbf{w}^{(2)}}^{\\!\\top}\n\\;\\in\\; \\mathbb{R}^{N\\times 4}||]</marimo-tex><span class=\"paragraph\">Each row <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> of <marimo-tex class=\"arithmatex\">||(\\delta^{(2)}||)</marimo-tex> (a scalar per example) gets spread across the 4 hidden neurons in proportion to <marimo-tex class=\"arithmatex\">||({\\mathbf{w}^{(2)}}||)</marimo-tex>.</span>\n<span class=\"paragraph\"><strong>Factor 2.</strong> <marimo-tex class=\"arithmatex\">||(\\mathbf{a}^{(1)} = \\sigma(\\mathbf{z}^{(1)})||)</marimo-tex> element-wise, so the activation derivative is also element-wise:</span>\n<marimo-tex class=\"arithmatex\">||[\\frac{\\partial \\mathbf{a}^{(1)}}{\\partial \\mathbf{z}^{(1)}} \\;=\\; \\sigma'(\\mathbf{z}^{(1)}) \\;=\\; \\mathbf{a}^{(1)}\\bigl(1 - \\mathbf{a}^{(1)}\\bigr)||]</marimo-tex><span class=\"paragraph\"><strong>Combine.</strong> Multiplying the two factors element-wise:</span>\n<marimo-tex class=\"arithmatex\">||[\\boxed{\\;\\delta^{(1)} \\;=\\; \\underbrace{\\delta^{(2)}\\,{\\mathbf{w}^{(2)}}^{\\!\\top}}_{\\text{routed error},\\ N\\times 4}\n\\;\\odot\\;\n\\underbrace{\\mathbf{a}^{(1)}\\bigl(1 - \\mathbf{a}^{(1)}\\bigr)}_{\\sigma'(\\mathbf{z}^{(1)}),\\ N\\times 4}\n\\;\\in\\; \\mathbb{R}^{N\\times 4}\\;}||]</marimo-tex><span class=\"paragraph\">Intuition:</span>\n<ul>\n<li>A hidden neuron <marimo-tex class=\"arithmatex\">||(j||)</marimo-tex> is \"blamed\" in proportion to its outgoing weight <marimo-tex class=\"arithmatex\">||(w_j^{(2)}||)</marimo-tex>. Hidden neurons that contribute strongly to the output get a strong error signal.</li>\n<li>The sigmoid factor again kills the signal for saturated hidden units \u2014 another source of the <strong>vanishing-gradient</strong> problem in deeper sigmoid networks.</li>\n</ul>\n<h4 id=\"gradients-for-hidden-parameters\">Gradients for hidden parameters</h4>\n<span class=\"paragraph\">Once <marimo-tex class=\"arithmatex\">||(\\delta^{(1)}||)</marimo-tex> is known, the hidden parameters follow the same pattern as Step 1. Since <marimo-tex class=\"arithmatex\">||(\\mathbf{z}^{(1)} = \\mathbf{x}\\,W^{(1)} + \\mathbf{b}^{(1)}||)</marimo-tex> (using the code's row-vector convention):</span>\n<marimo-tex class=\"arithmatex\">||[\\frac{\\partial \\mathcal{L}}{\\partial W^{(1)}} \\;=\\; \\mathbf{x}^\\top\\, \\delta^{(1)}, \\qquad \\frac{\\partial \\mathcal{L}}{\\partial \\mathbf{b}^{(1)}} \\;=\\; \\mathbf{1}^\\top \\delta^{(1)}||]</marimo-tex><hr />\n<h4 id=\"step-3-gradient-descent-update\">Step 3 \u2014 gradient descent update</h4>\n<marimo-tex class=\"arithmatex\">||[\\Theta \\;\\leftarrow\\; \\Theta - \\eta\\,\\nabla_{\\Theta}\\,\\mathcal{L}||]</marimo-tex><span class=\"paragraph\">where <marimo-tex class=\"arithmatex\">||(\\eta||)</marimo-tex> is the <strong>learning rate</strong>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aqbW",
+      "code_hash": "4086ba8f488a4ddd711eca871df33b4a",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TRpd",
+      "code_hash": "db033b6546890f7ba7da65ee0ea42443",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TXez",
+      "code_hash": "794f0f65320a5010f1477544301be15a",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "dNNg",
+      "code_hash": "3eca9bfea0ef899a73c4b3c37d0c3b4f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"stepped-backward-propagation\">Stepped backward propagation</h3>\n<span class=\"paragraph\">In the following demo you can interact with the training of the neural network.</span>\n<ul>\n<li><strong>Reset button</strong>: will drop any training done and reset the training to an initial state. Initial values for the parameters are chosen randomly.</li>\n<li><strong>Step</strong>: will train 1 epoch.</li>\n<li><strong>Step N</strong>: will train <marimo-tex class=\"arithmatex\">||(N||)</marimo-tex> epochs.</li>\n</ul>\n<h4 id=\"pay-attention-to\">Pay attention to:</h4>\n<h2 id=\"-the-initial-loss-will-continously-decrease-when-epochs-increase\">- The initial loss will continously decrease when epochs increase.</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "yCnT",
+      "code_hash": "5ce55637cffcbea7537198185d5503fc",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "wlCL",
+      "code_hash": "7eba7b316553d0c60eff4ce18a7b00ce",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "kqZH",
+      "code_hash": "a0d5907a0f69193fa1e8b787abd5830c",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "wAgl",
+      "code_hash": "ef0032c4370d821ec8e83d0954968f66",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
